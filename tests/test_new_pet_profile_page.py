@@ -1,14 +1,16 @@
 
 from pages.new_pet_page import ProfileNewPetPage
 from pages.profile_page import ProfilePage
+from settings import BASE_URL
+
+base_url_profile = BASE_URL + '/profile'
 
 
 def test_open_new_card_pet(browser, login):
-    link = 'http://34.141.58.52:8080/#/profile'
-    page = ProfilePage(browser, link)
+    page = ProfilePage(browser, base_url_profile)
     page.open()
     page.open_new_card_pet()
-    page = ProfileNewPetPage(browser, link)
+    page = ProfileNewPetPage(browser, base_url_profile)
     page.open()
     page.open_new_card_pet()
     page.new_pet_name()
@@ -17,6 +19,6 @@ def test_open_new_card_pet(browser, login):
     page.submit_btn()
     page.add_photo()
     page.submit_add_photo()
-    browser.save_screenshot('fill_new_pet_card.png')
+    browser.save_screenshot('../report/fill_new_pet_card.png')
 
 
